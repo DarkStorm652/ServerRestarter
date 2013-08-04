@@ -1,0 +1,20 @@
+name: ServerRestarter
+version:
+main: org.darkstorm.minecraft.bukkit.serverrestarter.ServerRestarter
+description: Simple configurable server restarting plugin
+author: DarkStorm_
+
+commands:
+  restart:
+    description: ServerRestarter command.
+    aliases: [sr]
+    usage: /<command> [restart | [[time] [message]]]
+permissions:
+  sr.*:
+    description: ServerRestarter permission nodes.
+    default: op
+    children:
+      sr.restart: true
+  sr.restart:
+    description: Permission to use the /restart command.
+    default: op
