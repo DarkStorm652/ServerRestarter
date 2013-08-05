@@ -124,6 +124,7 @@ public class ServerRestarter extends JavaPlugin {
 	}
 
 	private synchronized void resetTask(long newTime) {
+		disableScoreboard();
 		if(task != null)
 			getServer().getScheduler().cancelTask(taskId);
 		task = new ServerRestartTask(this, newTime);
@@ -291,15 +292,15 @@ public class ServerRestarter extends JavaPlugin {
 		type = type.toLowerCase();
 		long remaining = task.getRemainingTime();
 		if(type.equals("d"))
-			return TimeUnit.MILLISECONDS.toDays(remaining);
+			return TimeUnit.MILLISECONDS.toDays(remaining) + 1;
 		else if(type.equals("h"))
-			return TimeUnit.MILLISECONDS.toHours(remaining);
+			return TimeUnit.MILLISECONDS.toHours(remaining) + 1;
 		else if(type.equals("m"))
-			return TimeUnit.MILLISECONDS.toMinutes(remaining);
+			return TimeUnit.MILLISECONDS.toMinutes(remaining) + 1;
 		else if(type.equals("s"))
-			return TimeUnit.MILLISECONDS.toSeconds(remaining);
+			return TimeUnit.MILLISECONDS.toSeconds(remaining) + 1;
 		else if(type.equals("ms"))
-			return TimeUnit.MILLISECONDS.toMillis(remaining);
+			return TimeUnit.MILLISECONDS.toMillis(remaining) + 1;
 		else
 			throw new IllegalArgumentException();
 	}
