@@ -272,10 +272,9 @@ public class ServerRestarter extends JavaPlugin {
 	public void disableScoreboard() {
 		if(scoreboard == null)
 			return;
+		objective.unregister();
 		scoreboard = null;
-
-		for(Player player : getServer().getOnlinePlayers())
-			player.setScoreboard(null);
+		objective = null;
 	}
 
 	public void updateScoreboard() {
